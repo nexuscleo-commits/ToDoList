@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista de Tarefas</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="manifest" href="manifest.json">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>TAREFAS DIÁRIAS</h1>
+            <div class="input-container">
+                <input type="text" id="task-input" placeholder="Digite uma nova tarefa...">
+                <button id="add-button" class="action-button">Adicionar</button>
+                <button id="clear-button" class="action-button">Limpar Tudo</button>
+            </div>
+            <div id="task-list" class="list">
+            </div>
+            <div class="music-controls">
+                <button id="mute-toggle" class="music-button"><i class="material-icons">volume_up</i></button>
+            </div>
+        </div>
+
+        <footer>
+            <span id="copyright">&copy; </span>
+        </footer>
+        
+        <audio id="background-music" src="./audio/lofi.mp3" loop></audio>
+        <script src="script.js"></script>
+    </body>
+
+</html>

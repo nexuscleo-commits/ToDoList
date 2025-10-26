@@ -1,0 +1,312 @@
+
+body {
+    background-color: #333;
+    height: 100vh; /* Ocupa exatamente a altura da tela */
+    display: flex; /* Flexbox para organizar o layout */
+    flex-direction: column; /* Empilha os filhos verticalmente */
+    align-items: center; /* Centraliza os filhos horizontalmente */
+    margin: 0;
+    overflow: hidden; /* Bloqueia as barras de rolagem do navegador */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Faz o container crescer para ocupar o espaço disponível */
+    width: 100%; /* Garante que o container ocupe a largura total */
+    gap: 5px;
+    max-width: 500px;
+    height: 600px;
+    min-height: 400px; /* Garante uma altura mínima para o contêiner */
+    margin: 0; /* Remove a margem para que o 'gap' do body controle o espaço */
+    border-radius: 0px;
+    padding: 20px;
+    background-color: #333;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 1);
+    position: relative; 
+    overflow: hidden; 
+    z-index: 1; /* Cria um novo contexto de empilhamento */
+}
+
+/* Pseudo-elemento ::before para o gradiente animado */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza o gradiente */
+    width: 400vmin; /* Vmin para garantir que seja um quadrado e grande o suficiente */
+    height: 400vmin;
+    background: conic-gradient(#5f11dd, #00ffff, #5f11dd);
+    animation: rotate-gradient 4s linear infinite;
+    z-index: -2; /* Fica atrás de tudo dentro do container */
+}
+
+/* Pseudo-elemento ::after para simular o fundo, revelando a borda */
+.container::after {
+    content: '';
+    position: absolute;
+    inset: 2px; /* Cria o espaço da "borda" de 2px */
+    background-color: #333;
+    border-radius: 0px;
+    z-index: -1; /* Fica na frente do gradiente, mas atrás do conteúdo */
+}
+
+/* Estilo para o cabeçalho principal */
+.container h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin: 0 0 20px 0;
+    background: linear-gradient(45deg, #00ffff, #5f11dd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative; /* Garante que o título fique sobre os pseudo-elementos de fundo */
+    font-weight: 800;
+}
+
+/* Estilos para a área de input */
+.input-container {
+    display: flex;
+    gap: 10px; /* Espaço entre o input e o botão */
+    margin-bottom: 20px;
+    flex-wrap: nowrap; /* Garante que os itens permaneçam na mesma linha */
+    position: relative; /* Garante que os inputs fiquem sobre os pseudo-elementos */
+}
+
+#task-input {
+    flex-grow: 1; /* Faz o input ocupar o espaço disponível */
+    color: #000;
+    border: 2px solid transparent; /* Borda transparente para manter o tamanho */
+    border-radius: 0px;
+    font-size: 16px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+}
+
+::placeholder {
+    background: linear-gradient(45deg, #00ffff, #7513a3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    opacity: 0.7; /* Ajusta a opacidade para um visual mais sutil */
+}
+
+/* Classe comum para os botões principais */
+.action-button {
+    padding: 8px;
+    border: 2px solid transparent; /* Borda transparente para o efeito funcionar */
+    background-color: transparent; /* Fundo transparente */
+    border-radius: 0px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.action-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.9);
+}
+
+/* Classe genérica para a borda animada */
+.animated-border {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.animated-border::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500%; /* Garante cobertura total nos botões */
+    height: 500%;
+    background: conic-gradient(#5f11dd, #00ffff, #5f11dd);
+    animation: rotate-gradient 4s linear infinite;
+    z-index: -2;
+}
+
+.animated-border::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background-color: #333;
+    border-radius: 0px;
+    z-index: -1;
+}
+
+#add-button {
+    color: #00ffff;
+}
+
+/* Estilo para o botão de limpar a lista */
+#clear-button {
+    color: #d91111;
+}
+
+/* Rolagem da lista*/
+#task-list {
+    flex-grow: 1; /* A lista ocupa todo o espaço vertical restante */
+    overflow-y: auto; /* Adiciona a barra de rolagem vertical QUANDO necessário */
+    padding-right: 10px; /* Espaço para a barra de rolagem não cobrir o conteúdo */
+    position: relative; /* Garante que a lista fique sobre os pseudo-elementos */
+}
+
+/* Estilos para os itens da lista */
+.task-item {
+    display: flex;
+    justify-content: space-between; /* Alinha itens nas extremidades */
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 0px;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 18px;
+    transition: opacity 0.5s ease; /* Adiciona uma transição suave de opacidade */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Animação para a entrada de um novo item */
+.task-item.new {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Estilo para o texto principal da tarefa */
+.task-item .task-text {
+    flex-grow: 1; /* Faz o texto ocupar o espaço e empurrar o botão */
+    margin: 0 10px;
+}
+
+/* Estilo para a data/hora */
+.task-item .task-timestamp {
+    font-size: 14px;
+    color: rgba(0, 255, 255, 0.8);
+    margin-left: auto; /* Empurra o timestamp para a direita, antes do botão */
+    padding-right: 15px;
+    white-space: nowrap; /* Impede que o horário quebre a linha */
+    margin: 0 10px;
+}
+
+/* Estilo para o botão de lixeira */
+.delete-button {
+    background: none;
+    border: none;
+    color: #d91111;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.delete-button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Estilo para o ícone de check */
+.check-icon {
+    color: #00ffff;
+    cursor: pointer;
+    margin-right: 15px;
+    font-size: 24px; /* Tamanho do ícone */
+    transition: color 0.3s ease;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+/* Estilização da barra de rolagem */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #7513a3;
+    border-radius: 0px;
+    border: 2px solid #09ebd9;
+}
+
+/* Keyframes para a animação de fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframes para a animação de rotação do gradiente */
+@keyframes rotate-gradient {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Estilo para o rodapé */
+footer {
+    color: #00ffff;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    padding: 15px 0; /* Adiciona um espaçamento para não ficar colado na borda */
+}
+
+.music-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #00ffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.music-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    z-index: 2; /* Garante que fique sobre os pseudo-elementos */
+}
+
+/* ============== REGRAS DE RESPONSIVIDADE ============== */
+/* Estilos para telas com largura máxima de 768px */
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%; /* Ocupa mais espaço na tela */
+        height: auto; /* Permite que o flex-grow controle a altura */
+        margin: 20px auto; /* Margem superior/inferior reduzida */
+        padding: 15px; /* Preenchimento interno reduzido */
+    }
+
+    #task-input {
+        min-width: 0; /* Permite que o input encolha */
+    }
+
+    .task-item {
+        font-size: 16px;
+    }
+}
