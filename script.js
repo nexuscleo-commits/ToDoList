@@ -121,6 +121,12 @@ function addTask() {
 
 // 7. Função para limpar todas as tarefas
 function clearAllTasks() {
+    // Verifica se a lista de tarefas já está vazia
+    if (taskList.children.length === 0) {
+        alert("A lista de tarefas já está vazia!");
+        return; // Para a execução da função
+    }
+    
     // Pede confirmação ao usuário antes de apagar tudo
     const userConfirmed = confirm("Você tem certeza que deseja apagar todas as tarefas?");
 
