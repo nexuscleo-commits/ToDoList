@@ -1,58 +1,57 @@
-
 body {
     background-color: #333;
-    height: 100vh; /* Ocupa exatamente a altura da tela */
-    display: flex; /* Flexbox para organizar o layout */
-    flex-direction: column; /* Empilha os filhos verticalmente */
-    align-items: center; /* Centraliza os filhos horizontalmente */
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
     margin: 0;
-    overflow: hidden; /* Bloqueia as barras de rolagem do navegador */
+    overflow: hidden; 
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Faz o container crescer para ocupar o espaço disponível */
-    width: 100%; /* Garante que o container ocupe a largura total */
+    flex-grow: 1; 
+    width: 100%; 
     gap: 5px;
     max-width: 500px;
     height: 600px;
-    min-height: 400px; /* Garante uma altura mínima para o contêiner */
-    margin: 0; /* Remove a margem para que o 'gap' do body controle o espaço */
+    min-height: 400px; 
+    margin: 0; 
     border-radius: 0px;
     padding: 20px;
     background-color: #333;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 1);
     position: relative; 
     overflow: hidden; 
-    z-index: 1; /* Cria um novo contexto de empilhamento */
+    z-index: 1; 
 }
 
-/* Pseudo-elemento ::before para o gradiente animado */
+
 .container::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Centraliza o gradiente */
-    width: 400vmin; /* Vmin para garantir que seja um quadrado e grande o suficiente */
+    transform: translate(-50%, -50%); 
+    width: 400vmin; 
     height: 400vmin;
     background: conic-gradient(#5f11dd, #00ffff, #5f11dd);
     animation: rotate-gradient 4s linear infinite;
-    z-index: -2; /* Fica atrás de tudo dentro do container */
+    z-index: -2; 
 }
 
-/* Pseudo-elemento ::after para simular o fundo, revelando a borda */
+
 .container::after {
     content: '';
     position: absolute;
-    inset: 2px; /* Cria o espaço da "borda" de 2px */
+    inset: 2px; 
     background-color: #333;
     border-radius: 0px;
-    z-index: -1; /* Fica na frente do gradiente, mas atrás do conteúdo */
+    z-index: -1; 
 }
 
-/* Estilo para o cabeçalho principal */
+
 .container h1 {
     text-align: center;
     font-size: 2.2rem;
@@ -61,23 +60,23 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    position: relative; /* Garante que o título fique sobre os pseudo-elementos de fundo */
+    position: relative; 
     font-weight: 800;
 }
 
-/* Estilos para a área de input */
+
 .input-container {
     display: flex;
-    gap: 10px; /* Espaço entre o input e o botão */
+    gap: 10px; 
     margin-bottom: 20px;
-    flex-wrap: nowrap; /* Garante que os itens permaneçam na mesma linha */
-    position: relative; /* Garante que os inputs fiquem sobre os pseudo-elementos */
+    flex-wrap: nowrap; 
+    position: relative; 
 }
 
 #task-input {
-    flex-grow: 1; /* Faz o input ocupar o espaço disponível */
+    flex-grow: 1; 
     color: #000;
-    border: 2px solid transparent; /* Borda transparente para manter o tamanho */
+    border: 2px solid transparent; 
     border-radius: 0px;
     font-size: 16px;
     background-color: #fff;
@@ -89,14 +88,14 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    opacity: 0.7; /* Ajusta a opacidade para um visual mais sutil */
+    opacity: 0.7; 
 }
 
-/* Classe comum para os botões principais */
+
 .action-button {
     padding: 8px;
-    border: 2px solid transparent; /* Borda transparente para o efeito funcionar */
-    background-color: transparent; /* Fundo transparente */
+    border: 2px solid transparent; 
+    background-color: transparent; 
     border-radius: 0px;
     font-size: 14px;
     cursor: pointer;
@@ -110,7 +109,7 @@ body {
     box-shadow: 0 7px 15px rgba(0, 0, 0, 0.9);
 }
 
-/* Classe genérica para a borda animada */
+
 .animated-border {
     position: relative;
     overflow: hidden;
@@ -123,7 +122,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 500%; /* Garante cobertura total nos botões */
+    width: 500%; 
     height: 500%;
     background: conic-gradient(#5f11dd, #00ffff, #5f11dd);
     animation: rotate-gradient 4s linear infinite;
@@ -143,23 +142,23 @@ body {
     color: #00ffff;
 }
 
-/* Estilo para o botão de limpar a lista */
+
 #clear-button {
     color: #d91111;
 }
 
-/* Rolagem da lista*/
+
 #task-list {
-    flex-grow: 1; /* A lista ocupa todo o espaço vertical restante */
-    overflow-y: auto; /* Adiciona a barra de rolagem vertical QUANDO necessário */
-    padding-right: 10px; /* Espaço para a barra de rolagem não cobrir o conteúdo */
-    position: relative; /* Garante que a lista fique sobre os pseudo-elementos */
+    flex-grow: 1; 
+    overflow-y: auto; 
+    padding-right: 10px; 
+    position: relative; 
 }
 
-/* Estilos para os itens da lista */
+
 .task-item {
     display: flex;
-    justify-content: space-between; /* Alinha itens nas extremidades */
+    justify-content: space-between; 
     align-items: center;
     background-color: rgba(255, 255, 255, 0.1);
     padding: 10px;
@@ -167,32 +166,32 @@ body {
     margin-bottom: 10px;
     color: white;
     font-size: 18px;
-    transition: opacity 0.5s ease; /* Adiciona uma transição suave de opacidade */
+    transition: opacity 0.5s ease; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Animação para a entrada de um novo item */
+
 .task-item.new {
     animation: fadeIn 0.5s ease;
 }
 
-/* Estilo para o texto principal da tarefa */
+
 .task-item .task-text {
-    flex-grow: 1; /* Faz o texto ocupar o espaço e empurrar o botão */
+    flex-grow: 1; 
     margin: 0 10px;
 }
 
-/* Estilo para a data/hora */
+
 .task-item .task-timestamp {
     font-size: 14px;
     color: rgba(0, 255, 255, 0.8);
-    margin-left: auto; /* Empurra o timestamp para a direita, antes do botão */
+    margin-left: auto; 
     padding-right: 15px;
-    white-space: nowrap; /* Impede que o horário quebre a linha */
+    white-space: nowrap; 
     margin: 0 10px;
 }
 
-/* Estilo para o botão de lixeira */
+
 .delete-button {
     background: none;
     border: none;
@@ -210,12 +209,12 @@ body {
     cursor: not-allowed;
 }
 
-/* Estilo para o ícone de check */
+
 .check-icon {
     color: #00ffff;
     cursor: pointer;
     margin-right: 15px;
-    font-size: 24px; /* Tamanho do ícone */
+    font-size: 24px; 
     transition: color 0.3s ease;
 }
 
@@ -223,7 +222,7 @@ body {
     text-decoration: line-through;
     opacity: 0.6;
 }
-/* Estilização da barra de rolagem */
+
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -239,7 +238,7 @@ body {
     border: 2px solid #09ebd9;
 }
 
-/* Keyframes para a animação de fadeIn */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -251,7 +250,7 @@ body {
     }
 }
 
-/* Keyframes para a animação de rotação do gradiente */
+
 @keyframes rotate-gradient {
     from {
         transform: translate(-50%, -50%) rotate(0deg);
@@ -261,13 +260,13 @@ body {
     }
 }
 
-/* Estilo para o rodapé */
+
 footer {
     color: #00ffff;
     width: 100%;
     max-width: 500px;
     text-align: center;
-    padding: 15px 0; /* Adiciona um espaçamento para não ficar colado na borda */
+    padding: 15px 0; 
 }
 
 .music-button {
@@ -288,22 +287,21 @@ footer {
     position: absolute;
     bottom: 15px;
     right: 20px;
-    z-index: 2; /* Garante que fique sobre os pseudo-elementos */
+    z-index: 2; 
 }
 
-/* ============== REGRAS DE RESPONSIVIDADE ============== */
-/* Estilos para telas com largura máxima de 768px */
+
 
 @media (max-width: 768px) {
     .container {
-        width: 95%; /* Ocupa mais espaço na tela */
-        height: auto; /* Permite que o flex-grow controle a altura */
-        margin: 20px auto; /* Margem superior/inferior reduzida */
-        padding: 15px; /* Preenchimento interno reduzido */
+        width: 95%; 
+        height: auto; 
+        margin: 20px auto; 
+        padding: 15px; 
     }
 
     #task-input {
-        min-width: 0; /* Permite que o input encolha */
+        min-width: 0; 
     }
 
     .task-item {
