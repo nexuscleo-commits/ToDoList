@@ -124,7 +124,7 @@ function clearAllTasks() {
     // Verifica se a lista de tarefas já está vazia
     if (taskList.children.length === 0) {
         alert("A lista de tarefas já está vazia!");
-        return; // Para a execução da função
+        return;
     }
     
     // Pede confirmação ao usuário antes de apagar tudo
