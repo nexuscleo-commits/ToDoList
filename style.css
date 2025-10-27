@@ -27,28 +27,9 @@ body {
     z-index: 1; 
 }
 
-
 .container::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-    width: 400vmin; 
+    width: 400vmin;
     height: 400vmin;
-    background: conic-gradient(#5f11dd, #00ffff, #5f11dd);
-    animation: rotate-gradient 4s linear infinite;
-    z-index: -2; 
-}
-
-
-.container::after {
-    content: '';
-    position: absolute;
-    inset: 2px; 
-    background-color: #333;
-    border-radius: 0px;
-    z-index: -1; 
 }
 
 

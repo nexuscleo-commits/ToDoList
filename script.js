@@ -156,9 +156,6 @@ clearButton.addEventListener('click', clearAllTasks);
 
 document.addEventListener('DOMContentLoaded', () => {
     loadTasks();
-    
-    addButton.classList.add('animated-border');
-    clearButton.classList.add('animated-border');
 
     
     const copyrightSpan = document.getElementById('copyright');

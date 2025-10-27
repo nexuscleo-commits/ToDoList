@@ -27,7 +27,7 @@ Este projeto inclui uma música de fundo Lo-Fi para ajudar na concentração enq
 
 ## 📂 Como Usar
 
-1.  Clique no link de deploy:
+1.  Clique no link de deploy ou copie e cole no seu navegador:
     https://nexuscleo-commits.github.io/ToDoList/
 ---
 *Feito por NexusCleo*

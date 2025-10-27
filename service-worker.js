@@ -1,11 +1,14 @@
-const CACHE_NAME = 'task-list-v2'; 
+const CACHE_NAME = 'task-list-v3'; // Incrementar a versão para forçar a atualização
 const urlsToCache = [
     '/',
     'index.html',
     'style.css',
     'script.js',
-    'icon-192.png',
-    './audio/lofi.mp3' 
+    'manifest.json',
+    './audio/lofi.mp3',
+    './img/icon-192.png',
+    './img/icon-512.png',
+    './img/maskable-icon.png'
 ];
 
 self.addEventListener('install', event => {
@@ -15,9 +18,20 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
+    // Estratégia "Stale-While-Revalidate"
     event.respondWith(
-        
-        caches.match(event.request).then(response => response || fetch(event.request))
+        caches.open(CACHE_NAME).then(cache => {
+            return cache.match(event.request).then(response => {
+                // Retorna o cache imediatamente se disponível
+                const fetchPromise = fetch(event.request).then(networkResponse => {
+                    // Atualiza o cache com a nova versão
+                    cache.put(event.request, networkResponse.clone());
+                    return networkResponse;
+                });
+                // Retorna o cache antigo enquanto a rede busca a nova versão
+                return response || fetchPromise;
+            });
+        })
     );
 });
 

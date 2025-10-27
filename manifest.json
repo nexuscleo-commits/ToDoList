@@ -4,11 +4,11 @@
     "description": "Uma aplicação simples de lista de tarefas com borda animada.",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#7513a3",
-    "theme_color": "#7513a3",
+    "background_color": "#5f11dd",
+    "theme_color": "#5f11dd",
     "icons": [
         {
-            "src": "icon-192.png",
+            "src": "./img/icon-192.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "any"
