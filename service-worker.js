@@ -1,4 +1,4 @@
-const CACHE_NAME = 'task-list-v3'; // Incrementar a versão para forçar a atualização
+const CACHE_NAME = 'task-list-v1.2'; // Incrementar a versão para forçar a atualização
 const urlsToCache = [
     '/',
     'index.html',
