@@ -288,8 +288,6 @@ footer {
     z-index: 2; 
 }
 
-
-
 @media (max-width: 768px) {
     .container {
         width: 95%; 
