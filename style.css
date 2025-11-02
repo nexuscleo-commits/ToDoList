@@ -43,7 +43,7 @@ body {
 .container::after {
     content: '';
     position: absolute;
-    inset: 2px;
+    inset: 1px;
     background-color: #333;
     border-radius: 0px;
     z-index: -1;
@@ -92,7 +92,7 @@ body {
 
 .action-button {
     padding: 8px;
-    border: 2px solid transparent; 
+    border: 1px solid transparent; 
     background-color: transparent; 
     border-radius: 0px;
     font-size: 14px;
@@ -130,7 +130,7 @@ body {
 .animated-border::after {
     content: '';
     position: absolute;
-    inset: 2px;
+    inset: 1px;
     background-color: #333;
     border-radius: 0px;
     z-index: -1;
