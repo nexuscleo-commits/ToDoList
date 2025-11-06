@@ -120,8 +120,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 500%; 
-    height: 500%;
+    width: 800%; 
+    height: 800%;
     background: conic-gradient(#5f11dd, #00ffff, #5f11dd);
     animation: rotate-gradient 4s linear infinite;
     z-index: -2;
