@@ -291,7 +291,7 @@ footer {
 @media (max-width: 768px) {
     .container {
         width: 95%; 
-        height: auto; 
+        height: 1080px; 
         margin: 20px auto; 
         padding: 15px; 
     }
